@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beginner's Full Guide to Islands</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<script>
+  // set theme before first paint to avoid a flash of the wrong mode
+  (function () {
+    var match = document.cookie.match(/(?:^|;\s*)islands-guide-theme=(dark|light)/);
+    var theme = match ? match[1] : (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
+</head>
+<body>
+
+  <!-- Mobile top bar -->
+  <header class="mobile-bar">
+    <div class="mobile-bar__title">
+      <span class="compass-mark" aria-hidden="true">&#8982;</span>
+      Islands Guide
+    </div>
+    <div class="mobile-bar__actions">
+      <button class="theme-toggle" id="themeToggleMobile" type="button" aria-label="Toggle light and dark mode" aria-pressed="false">
+        <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">&#9728;</span>
+        <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">&#9789;</span>
+      </button>
+      <button class="mobile-bar__toggle" id="navToggle" aria-expanded="false" aria-controls="sidebar">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="shell">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__brand">
+        
+          <h1 class="sidebar__title">ISLANDS</h1>
+          <button class="theme-toggle theme-toggle--full" id="themeToggleDesktop" type="button" aria-label="Toggle light and dark mode" aria-pressed="false">
+          <i class="fas fa-sun theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true"></i>
+          <span class="theme-toggle__track" aria-hidden="true"><span class="theme-toggle__knob"></span></span>
+          <i class="fas fa-moon theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true"></i>
+        </button>
+    
+      </div>
+
+      <nav class="sidebar__nav" aria-label="Guide sections">
+        <p class="sidebar__label">Tutorials</p>
+        <ul>
+          <li><a href="#home" data-coord="N-00"><span class="nav-coord">001</span>Home</a></li>
+          <li><a href="#interface" data-coord="N-01"><span class="nav-coord">002</span>Interface</a></li>
+          <li><a href="#core-gameplay" data-coord="N-02"><span class="nav-coord">003</span>Core Gameplay</a></li>
+          <li><a href="#npcs-quests" data-coord="N-03"><span class="nav-coord">004</span>NPCs &amp; Quests</a></li>
+          <li><a href="#blacksmith" data-coord="N-04"><span class="nav-coord">005</span>Blacksmith</a></li>
+          <li><a href="#tips" data-coord="N-05"><span class="nav-coord">006</span>Tips</a></li>
+        </ul>
+      </nav>
+
+      <div class="sidebar__footer">
+        <p class="sidebar__label">Official Links</p>
+        <Br>
+          <nav class="footer-links" aria-label="Official Islands links">
+          <a href="https://t.co/eDUcFf9JFM" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-gamepad" aria-hidden="true"></i>&nbsp; Game Link
+          </a>
+          <br>
+          <a href="https://x.com/IslandsOnSol" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-x-twitter" aria-hidden="true"></i> &nbsp;&nbsp;IslandsOnSol
+          </a>
+          <br>
+          <a href="https://t.co/fAulGjQFAz" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-discord" aria-hidden="true"></i> &nbsp;Discord
+          </a>
+          <br>
+          <a href="https://islands.games/docs#what-is-islands" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-book" aria-hidden="true"></i>&nbsp;&nbsp; &nbsp;Islands Docs
+          </a>
+          <br>
+        </nav>
+        <br>
+        <p>Unofficial player-written guide.<br>Sail safe, grind smart.</p>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="content">
+    <section id="home" class="region">
+      <div class="content__hero">
+        <p class="content__hero-eyebrow">A player-made logbook for new captains</p>
+        <h2 class="content__hero-title">Everything you need to survive your first islands.</h2>
+        <p class="content__hero-sub">From reading the map to surviving your first raid — this guide walks new players through the interface, core gameplay loops, NPCs, the blacksmith, and the tricks veteran players wish they knew sooner.</p>
+      </div>
+    </section>
+
+      <!-- ================= INTERFACE ================= -->
+      <section id="interface" class="region">
+        <div class="region__header">
+          <h2>Interface</h2>
+          <p class="region__intro">The screens and panels you'll live in every session — get comfortable here first.</p>
+        </div>
+
+        <article class="card" id="chat">
+          <h3>Chat</h3>
+          <p>You can interact here if you have any questions regarding the game. Invite players for a raid or make friends in the game!</p>
+        </article>
+
+        <article class="card" id="character">
+          <h3>Character</h3>
+          <p>For beginners, there are three things to focus on:</p>
+          <h4>Stats</h4>
+          <p>Every 25% of EXP earns you 1 stat point.</p>
+          <div class="callout callout--tip">
+            <p class="callout__label">Recommended</p>
+            <p>Put your early stat points into <strong>Strength</strong> for faster grinding. Add Agility or Vitality later once Strength is covered.</p>
+          </div>
+          <h4>Guardian</h4>
+          <p>There are three Guardian types. Beginners should pick the <strong>Monk</strong> — it lets you heal while killing mobs.</p>
+          <h4>Pets</h4>
+          <p>Shows the pets you own. Level them up with eggs to keep their energy up and gain more stats. Pets can also be fused together.</p>
+        </article>
+
+        <article class="card" id="marketplace">
+          <h3>Marketplace</h3>
+          <p>Buy and sell items here. Selling requires burning <strong>10,000 $ISLANDS</strong>, but buying doesn't cost anything to burn.</p>
+          <div class="callout callout--tip">
+            <p class="callout__label">Recommended</p>
+            <p>Start with an <strong>Epic gear set</strong> — it's cheap (around $0.30 for weapon, armor, and shoes) and gets you grinding faster.</p>
+          </div>
+        </article>
+
+        <article class="card" id="equipment">
+          <h3>Equipment Tab</h3>
+          <p>Shows your current gear. Equip items from the Inventory tab by clicking them, and unequip by clicking the item on the Equipped tab. Gear can be upgraded at the Blacksmith for additional stats — more on that in the Blacksmith section below.</p>
+        </article>
+
+        <article class="card" id="backpack">
+          <h3>Backpack</h3>
+          <p>Shows your resources — meat, gold, wood, runes, and more. It also has a hotkey section for healing yourself, your pet, your guardian, and using potions. Bind these to keys <strong>1–5</strong> based on your preference.</p>
+        </article>
+
+        <article class="card" id="map">
+          <h3>Map</h3>
+          <p>Your guide to the islands, including coordinates.</p>
+          <ul class="marker-list">
+            <li><span class="marker marker--boss"></span> <strong>Yellow dot</strong> — a boss has spawned there.</li>
+            <li><span class="marker marker--frenzy"></span> <strong>Yellow dot with circle</strong> — an Island Frenzy event. Best avoided as a beginner.</li>
+          </ul>
+        </article>
+
+        <article class="card" id="buy-land">
+          <h3>Buy Land</h3>
+          <p>Owning land gives you more resources while you play, and a share of gold whenever another player hatches an egg on it. Land can also be customized to your preference. See the docs for full details.</p>
+        </article>
+              
+
+      </section>
+
+      <!-- ================= CORE GAMEPLAY ================= -->
+      <section id="core-gameplay" class="region">
+        <div class="region__header">
+          <span class="region__coord"></span>
+          <h2>Core Gameplay</h2>
+          <p class="region__intro">The loops that earn you XP, gold, and gear.</p>
+        </div>
+
+
+        <article class="card" id="mobs">
+          <h3>Mobs — Your Direct Path to Leveling Up</h3>
+          <p>Killing enemies grants the XP listed next to their HP. Chopping trees gives 3 XP each, plus wood.</p>
+          <table class="stat-table">
+            <caption>Mob drop rates</caption>
+            <thead><tr><th>Drop</th><th>Chance</th></tr></thead>
+            <tbody>
+              <tr><td>Meat</td><td>99.5%</td></tr>
+              <tr><td>Runes</td><td>0.16%</td></tr>
+              <tr><td>Gear</td><td>5%</td></tr>
+              <tr><td>Gold</td><td>0.5%</td></tr>
+            </tbody>
+          </table>
+          <p class="fine-print">Trees drop Wood.</p>
+        </article>
+
+        <article class="card" id="mining">
+          <h3>Mining</h3>
+          <h4>Gold</h4>
+          <p>At <strong>level 10</strong> you unlock Gold mining from gold nodes. Gold upgrades gear and pets — boosting damage, survivability, and clear speed, which in turn means more XP per hour.</p>
+          <h4>Diamonds</h4>
+          <p>At <strong>level 60</strong> you can mine Diamonds from blue nodes. Diamonds are the key to raids, unlocked from level 26 onward.</p>
+        </article>
+
+        <article class="card" id="fishing">
+          <h3>Fishing</h3>
+          <p>Find bubbling water spots on the map and interact with them.</p>
+          <ul>
+            <li>Fish restore <strong>25% HP</strong> — same as meat, great for healing on the go.</li>
+            <li>Old Boots are also a possible catch — use them as bait, or sell them on the marketplace.</li>
+          </ul>
+        </article>
+
+        <article class="card" id="hatching-field">
+          <h3>Hatching Field</h3>
+          <p>If you get lucky and an egg drops from a mob, hatch it here. It costs <strong>100 gold</strong> to place an egg in the hatchery, and rewards you with a pet that adds extra stats and affixes — and can fight alongside you for faster grinding.</p>
+        </article>
+
+        <article class="card" id="gacha">
+          <h3>Gacha</h3>
+          <p>Try your luck for exclusive skins through the Gacha. Each skin comes with corresponding stats that get added to your character.</p>
+        </article>
+
+        <article class="card" id="skills">
+          <h3>Skills</h3>
+          <p>Choose between 7 skills based on your playstyle. Check the official docs for full skill details.</p>
+        </article>
+
+      </section>
+
+      <!-- ================= NPCS & QUESTS ================= -->
+      <section id="npcs-quests" class="region">
+        <div class="region__header">
+          <span class="region__coord"></span>
+          <h2>NPCs and Quests</h2>
+          <p class="region__intro">The characters that hand out quests, skills, and boosts.</p>
+        </div>
+
+
+        <article class="card" id="seer">
+          <h3>Seer</h3>
+          <p>Click the Seer to open your quest tab.</p>
+          <div class="callout callout--tip">
+            <p class="callout__label">Recommended</p>
+            <p>Grab these quests first — they give extra EXP and gear at the same time.</p>
+          </div>
+          <h4>Your first skill</h4>
+          <p>Go to <strong>Seer &rarr; Rogue Hunt &rarr; Pick your Skill</strong>. Check the Islands docs for full skill details.</p>
+          <h4>Skins</h4>
+          <p>Skins are now part of the game. Go to <strong>Seer &rarr; Daily: Islands Chores</strong> to get your costume, then equip it from <strong>Equipment Tab &rarr; Inventory</strong> by clicking the skin.</p>
+        </article>
+
+        <article class="card" id="merchant">
+          <h3>Merchant</h3>
+          <p>Sells various potions that temporarily boost your stats.</p>
+          <div class="callout callout--tip">
+            <p class="callout__label">Recommended</p>
+            <p>Grab a <strong>Swiftness Potion</strong> as a beginner — it helps you move around the map much faster.</p>
+          </div>
+        </article>
+
+        <article class="card" id="warmaster-bram">
+          <h3>Warmaster Bram</h3>
+          <p>Offers two raid options:</p>
+          <ul>
+            <li><strong>The Shallow Trials</strong> — for beginners, levels 5–25. Requires 1,000 wood.</li>
+            <li><strong>The Sunken Trials</strong> — accessible from levels 26–100. Requires 25 diamonds.</li>
+          </ul>
+          <div class="callout callout--tip">
+            <p class="callout__label">Recommended</p>
+            <p>Raids give a lot of EXP. Form a party for a faster clear.</p>
+          </div>
+        </article>
+
+      </section>
+
+      <!-- ================= BLACKSMITH ================= -->
+      <section id="blacksmith" class="region">
+        <div class="region__header">
+          <span class="region__coord"></span>
+          <h2>Blacksmith</h2>
+          <p class="region__intro">Where gear gets stronger — and where it can go wrong.</p>
+        </div>
+
+
+        <article class="card">
+          <p>The Blacksmith offers many services, but as a beginner focus on three things first:</p>
+
+          <h4>Upgrading Equipment</h4>
+          <p>Upgrading costs gold and wood, and can boost your gear's stats.</p>
+          <div class="callout callout--warning">
+            <p class="callout__label">Risk</p>
+            <p>Upgrading can <strong>shatter</strong> your weapon and the upgrade can fail. You can protect a weapon from shattering by burning <strong>7,000 $ISLANDS</strong>.</p>
+          </div>
+
+          <h4>Enchanting</h4>
+          <p>Runes dropped by mobs can be enchanted onto weapons, each giving a specific affix boost.</p>
+          <div class="callout callout--tip">
+            <p class="callout__label">Recommended</p>
+            <p>If you have runes to spare, prioritize <strong>Insight, Slayer, and Sharpness</strong> — they help you kill mobs faster and earn more EXP. Remember: each gear piece can only hold <strong>4 affixes (4 runes)</strong>, so choose wisely.</p>
+          </div>
+
+          <h4>Salvage</h4>
+          <p>Once you have better equipment, salvage your old common or rare weapons for EXP.</p>
+        </article>
+
+      </section>
+
+      <!-- ================= TIPS ================= -->
+      <section id="tips" class="region">
+        <div class="region__header">
+          <span class="region__coord"></span>
+          <h2>Tips</h2>
+          <p class="region__intro">Small habits that separate a smooth run from a rough one.</p>
+        </div>
+
+        <article class="card card--split card--full">
+          <div class="card__body">
+            <h3>$ISLANDS Holding</h3>
+            <p>Holding $ISLANDS comes with real benefits:</p>
+            <ul>
+              <li>Higher marketplace listing thresholds and longer listing time.</li>
+              <li>Additional stats for your pets and character.</li>
+            </ul>
+            <p class="fine-print">See the official docs for full holding tiers.</p>
+          </div>
+          <div class="tip-image" aria-hidden="true"></div>
+        </article>
+
+        <article class="card card--split card--full">
+          <div class="card__body">
+            <h3>Guardians on Islands</h3>
+            <p>Struggling to kill a mob without dying? Dying costs you EXP.</p>
+            <div class="callout callout--tip">
+              <p class="callout__label">Recommended</p>
+              <p>Fight near a Guardian Monk or Archer stationed on the islands close to you — they'll heal you even if you don't have your own Guardian deployed.</p>
+            </div>
+          </div>
+          <div class="tip-image" aria-hidden="true"></div>
+        </article>
+
+        <article class="card card--split card--full">
+          <div class="card__body">
+            <h3>Mobs to Avoid</h3>
+            <div class="callout callout--warning">
+              <p class="callout__label">Danger</p>
+              <p><strong>The Kraken, Minotaur, and Boar</strong> can kill you in one hit if you're not careful. Dying costs you EXP.</p>
+            </div>
+            <p class="fine-print">Only challenge these mobs once you have a Guardian — specifically a Monk.</p>
+          </div>
+          <div class="tip-image" aria-hidden="true"></div>
+        </article>
+
+        <article class="card card--split card--full">
+          <div class="card__body">
+            <h3>Progression</h3>
+            <p>If you want to push further into the game, reinvesting your earnings back into upgrading gear and pets goes a long way.</p>
+          </div>
+          <div class="tip-image" aria-hidden="true"></div>
+        </article>
+
+      </section>
+
+
+      <footer class="content__footer">
+        <p>Fair winds, Adventurer. See you on the islands.</p>
+      </footer>
+
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
